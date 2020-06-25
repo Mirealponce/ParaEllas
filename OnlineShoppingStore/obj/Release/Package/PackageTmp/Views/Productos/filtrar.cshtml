@@ -1,0 +1,56 @@
+﻿@model IEnumerable<OnlineShoppingStore.Models.DAL.Producto>
+
+@{
+    ViewBag.Title = "filtrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="Categorias">
+
+        @{ Html.RenderAction("MostrarCategoria", "Categorias");}
+    </div>
+    <div class="row product-container" style="margin-top:-150px; margin-left:300px;">
+
+        @foreach (var item in Model)
+        {
+
+    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px;height: 370px;width: 246px;">
+        <a href=@("../Productos/Details/"+item.idProducto)>
+            <div class="thumbnail product-item" style="height:350px; width:220px;">
+
+                <div class="caption">
+
+                    @if (!string.IsNullOrEmpty(item.Foto))
+                    {
+    <center>
+        <img src="@Url.Content(item.Foto)" alt="Image" style="width:180px;height:250px;" />
+    </center>                }
+
+
+
+                    <div>
+                        <center>
+                            @Html.DisplayFor(modelItem => item.Categoria.tipoCategoria)
+                        </center>
+                    </div>
+                    <div>
+                        <center>
+                            @Html.DisplayFor(modelItem => item.nombreProducto)
+                        </center>
+                    </div>
+                    <div>
+                        <center>
+                            @Html.DisplayFor(modelItem => item.precio)
+                        </center>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            </a>
+    </div>}
+    </div>
+
+

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<OnlineShoppingStore.Models.DAL.Categoria>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Categorías</li>
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+
+            @Html.ActionLink("Crear Categoría ", "Create")
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            
+                            <th>Nombre de la Categoría</th>
+                            <th>Acción</th>
+
+                        </tr>
+                    </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                            
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tipoCategoria)
+                                            </td>
+                                            <td>
+                                                
+                                                @Html.ActionLink("Modificar", "Edit", new { id = item.idCategoria}, new { @class = "btn btn-warning" }) 
+                                                
+                                                
+                                                @Html.ActionLink("Eliminar", "Delete", new { id = item.idCategoria }, new {@class = "btn btn-danger" })
+                                            </td>
+                                    </tr>
+                                           }
+                            </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

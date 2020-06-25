@@ -1,0 +1,66 @@
+﻿@model OnlineShoppingStore.Models.DAL.Direccion
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Direccion</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.region)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.region)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.comuna)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.comuna)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.calle)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.calle)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.numero)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.numero)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Cliente.nombre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Cliente.nombre)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.idDireccion }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

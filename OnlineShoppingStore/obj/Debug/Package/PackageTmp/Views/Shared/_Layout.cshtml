@@ -1,0 +1,156 @@
+﻿@using OnlineShoppingStore.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/stylemain.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #ffffff00;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+              
+            <a class="navbar-brand" href="/Home/Index" style="color:black;">Para Ellas</a>
+
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    
+                    <li><a href="/Home/Index" style="border-radius:initial; color:black;">Inicio</a></li>
+                    <li><a href="/Productos/IndexClient" style="border-radius:initial; color:black;">Vestuario</a></li>
+                    <li><a href="/Home/Contact" style="border-radius:initial; color:black;">Contacto</a></li>
+
+
+                </ul>
+                <p align="right">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown" >
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="../Productos/DetalleCarrito" style=" color:black;
+                                ">Carrito <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @if (Session["cart"] != null)
+                                {
+                                    foreach (Carrito item in (List<Carrito>)Session["cart"])
+                                    {
+                    <li><a href="../Productos/DetalleCarrito">@item.Productos.nombreProducto (@item.Cantidad)</a></li>}
+                                }
+                                <li class="divider"></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="/Clientes/IniciarSesion"><img src="~/Content/Icons/usuario.png" width="24" height="24" /></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Clientes/IniciarSesion">Iniciar Sesión</a></li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </p>
+                <!-- Html.Partial("_LoginPartial")-->
+            </div>
+
+            
+
+
+        </div>
+    </div>
+
+    <!--
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="logo">
+                    <h1><a href="#">Online <span>Shopping Store</span></a></h1>
+                    <p>My Shop</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="account">
+                    <ul>
+                        <li>
+                            <div class="hidden-xs">
+                                <h4><a>Call</a></h4>
+                                <p>984713915</p>
+                            </div>
+
+                            <div class="visible-xs">
+
+                                <p>984713915</p>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-md-12">
+                <div class="nav-menus">
+
+                    <ul class="nav nav-pills">
+                        <li class="active"><a style="border-radius:initial;" href="#">Home</a></li>
+                        <li>Html.ActionLink("Vestuario", "IndexClient", "Productos")</li>
+                        <li>Html.ActionLink("Contacto", "Contact", "Home")</li>
+
+                        <li><a style="border-radius:initial;" href="#">About</a></li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        -->
+
+
+
+
+    @RenderBody()
+    <hr 
+    style="margin-top: 200px;"
+ />
+    <footer>
+        <div class="row">
+            <div class="col-md-12 copyright">
+                <div class="col-md-6 col-sm-6 copyright-left">
+                    <p>&copy; @DateTime.Now.Year - Para Ellas. Todos los derechos reservados. </p>
+                </div>
+
+                <div class="col-md-6 col-sm-6 copyright-right">
+                    <ul class="list-unstyled list-social">
+                        <li><a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+
+                    </ul>
+                    <p>&copy; @DateTime.Now.Year - Para Ellas. Todos los derechos reservados. </p>
+                </div>
+
+            </div>
+        </div>
+        <p></p>
+    </footer>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

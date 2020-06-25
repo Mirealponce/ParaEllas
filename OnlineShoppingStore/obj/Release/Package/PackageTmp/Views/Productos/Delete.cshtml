@@ -1,0 +1,83 @@
+﻿@model OnlineShoppingStore.Models.DAL.Producto
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item ">Producto</li>
+        <li class="breadcrumb-item active">Eliminar Producto</li>
+
+
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Eliminar Producto
+        </div>
+        <div class="card-body">
+            <h4>Producto</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Foto
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Foto)
+                </dd>
+
+                <dt>
+                    Nombre
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.nombreProducto)
+                </dd>
+
+                <dt>
+                    Precio
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.precio)
+                </dd>
+
+                <dt>
+                    Descripción
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Descripcion)
+                </dd>
+
+                <dt>
+                    Categoria
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Categoria.tipoCategoria)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Eliminar" class="btn btn-danger" /> 
+                    @Html.ActionLink("Atrás", "Index",null,new {@class="btn btn-info"})
+                </div>
+            }
+        </div>
+    </div>
+</div>

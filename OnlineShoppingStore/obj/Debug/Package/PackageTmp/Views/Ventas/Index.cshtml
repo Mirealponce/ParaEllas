@@ -1,0 +1,68 @@
+﻿@model IEnumerable<OnlineShoppingStore.Models.DAL.Venta>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Ventas</li>
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+
+            @Html.ActionLink("Nueva venta", "Create")
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                Total venta
+                            </th>
+                            <th>
+                                Fecha de venta
+                            </th>
+                            <th>
+                                Nombre de cliente
+                            </th>
+                            <th>
+                                Acción
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.totalVenta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fecha_Venta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cliente.nombre)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.idVenta }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.idVenta }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.idVenta })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

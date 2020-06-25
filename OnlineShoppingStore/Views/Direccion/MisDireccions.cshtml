@@ -1,0 +1,36 @@
+﻿@model IEnumerable<OnlineShoppingStore.Models.DAL.Direccion>
+
+@{
+    ViewBag.Title = "MisDireccions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2 style=" margin-top: 100px; ">Mis Direcciones </h2></center>
+
+
+
+
+
+@foreach (var item in Model)
+{
+    <center>
+        <div style=" width: 1000px; margin-top: 50px; ">
+
+
+            @Html.DisplayFor(modelItem => item.calle)
+
+            @Html.DisplayFor(modelItem => item.numero)
+            @Html.DisplayFor(modelItem => item.comuna)
+            @Html.DisplayFor(modelItem => item.region)
+
+
+
+
+            <a href=@("/Direccion/Edit/"+item.idDireccion) style=" margin-left: 50px; " class="btn btn-warning">Editar</a>
+
+            <hr style=" margin-left: 200px; margin-right: 200px; " />
+
+        </div>
+    </center>
+
+}

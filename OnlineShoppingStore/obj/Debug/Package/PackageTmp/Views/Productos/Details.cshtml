@@ -1,0 +1,105 @@
+﻿@model OnlineShoppingStore.Models.DAL.Producto
+
+@{ ViewBag.Title = "Details";
+ Layout = "~/Views/Shared/_Layout.cshtml";
+   }
+
+
+
+<div>
+
+
+    <div>
+        @if (!string.IsNullOrEmpty(Model.Foto))
+        {
+<center>
+    <img src="@Url.Content(Model.Foto)" alt="Image" style="width: 300px; height: 450px; margin-top: 100px;" />
+</center>}
+    </div>
+</div>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal" style="width: 300px; margin-left: 800px; margin-top: -470px; ">
+
+        <dd>
+            <center>
+                @Html.DisplayFor(model => model.nombreProducto)
+            </center>
+        </dd>
+
+        <dt>
+            <label>Tallas</label>
+        </dt>
+        <dd class="Tallas">
+
+            @{ Html.RenderAction("detalleProducto", "DetalleProductoes", new { id = Model.idProducto });}
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            $
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.tipoCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.tipoCategoria)
+        </dd>
+        <dt>
+           <label>Cantidad</label>
+        </dt>
+
+        <dd>
+           
+        </dd>
+
+    </dl>
+
+    <p style=" margin-top: -120px; ">
+
+        @using (Html.BeginForm("AddToCart", "Productos", new { id = Model.idProducto }, FormMethod.Post, new {@class="carrito" }))
+        {
+            
+                    <input type="text" name="cant" id="cant" style=" margin-top: 73px; margin-left: 5px; "><br><br>
+                    <button  value="Agregar a carrito" type="submit" class="btn btn-warning" style="margin-left: 980px; width: 150px;height: 36px;margin-top: 10px;"><i class="fa fa-shopping-cart"></i>Agregar a carrito</button>
+
+        }
+    </p>
+    <p style="margin-left: 1000px;">
+        @Html.ActionLink("Detalle de Carrito", "../Productos/DetalleCarrito")
+    </p>
+    <script type="text/javascript">
+        function getCantidad() {
+           var idProd= @Model.idProducto;
+            var cantidad = document.getElementById("cant").value;
+            alert("Cantidad Ingresada " + cantidad + ": " + idProd);
+
+            //window.location.href = "../Productos/AddToCart/" + idProd + "/" + cantidad;
+            //var url = "/AddToCart/" + idProd + "?cantidad=" + cantidad;
+            //$("#carrito").load(url)
+            return cantidad;
+        }
+    </script>
+
+
+
+</div>
+
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<OnlineShoppingStore.Models.DAL.DetalleProducto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Talla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.nombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.precio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Talla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CantidadStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.nombreProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.precio)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.idDetalleProducto }) |
+            @Html.ActionLink("Details", "Details", new { id = item.idDetalleProducto }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.idDetalleProducto })
+        </td>
+    </tr>
+}
+
+</table>

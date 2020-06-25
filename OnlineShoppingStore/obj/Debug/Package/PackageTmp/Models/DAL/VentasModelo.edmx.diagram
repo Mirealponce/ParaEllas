@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ab0ddbf2ab82407396cbf3e8f9bb2096" Name="Diagram1">
+        <EntityTypeShape EntityType="VentasModel.Categoria" Width="1.5" PointX="1.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Cliente" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.DetalleProducto" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.DetalleVenta" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Direccion" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Producto" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.telefono" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.UsuarioAdmin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Venta" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="VentasModel.fk_Producto_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.fk_Direccion_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.fk_telefono_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.fk_Venta_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.fk_DetalleProducto_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.fk_DetalleVenta_DetalleProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.fk_DetalleVenta_Venta" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

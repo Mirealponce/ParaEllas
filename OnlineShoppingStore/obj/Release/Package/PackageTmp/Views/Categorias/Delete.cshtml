@@ -1,0 +1,78 @@
+﻿@model OnlineShoppingStore.Models.DAL.Categoria
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item ">Categorías</li>
+        <li class="breadcrumb-item active">Eliminar Categoría</li>
+
+
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Eliminar Categoría
+
+        </div>
+
+        <div class="card-body">
+            <h4>Categoría</h4>
+            <dl class="dl-horizontal">
+                <dt>
+                    Nombre de Categoría
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tipoCategoria)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Eliminar" class="btn btn-danger" /> 
+                    @Html.ActionLink("Cancelar", "Index",null,new{@class="btn btn-info"})
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+
+        <!--<div>
+        <h4>Categoria</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Html.DisplayNameFor(model => model.tipoCategoria)
+            </dt>
+
+            <dd>
+                Html.DisplayFor(model => model.tipoCategoria)
+            </dd>
+
+        </dl>
+
+        using (Html.BeginForm())
+        {
+            Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+        </div> -->

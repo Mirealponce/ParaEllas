@@ -1,0 +1,54 @@
+﻿@model OnlineShoppingStore.Models.DAL.Cliente
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    
+        <h2 style="        margin-top: 80px;
+        margin-left: 100px;">Infomación</h2>
+
+        <div>
+           
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    <label>Nombre: </label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.nombre)
+                </dd>
+
+                <dt>
+                    <label>Apellido: </label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.apellido)
+                </dd>
+
+                <dt>
+                    <label>Correo  </label><br />
+                    <label>Electrónico:</label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.correo)
+                </dd>
+
+                <dt>
+                    <label>Contraseña:  </label>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.pass)
+                </dd>
+
+            </dl>
+
+
+            @Html.ActionLink("Agregar telefono", "Create", "telefonos", new { id = Model.idCliente }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Agregar Dirección", "Create", "Direccion", new { id = Model.idCliente }, new { @class = "btn btn-warning" })
+
+        </div>

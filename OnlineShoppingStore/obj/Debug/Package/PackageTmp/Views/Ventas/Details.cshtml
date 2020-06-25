@@ -1,0 +1,43 @@
+﻿@model OnlineShoppingStore.Models.DAL.Venta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Venta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.totalVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_Venta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_Venta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idVenta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

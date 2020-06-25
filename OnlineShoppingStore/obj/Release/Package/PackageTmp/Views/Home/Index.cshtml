@@ -1,0 +1,229 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!--<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+    -->
+    <body style="        background-image: url('/Content/Icons/home image-280x280.jpg');
+        background-color: rgba(255,255,255,0);
+">
+        <div id="themeSlider" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+                <li data-target="#themeSlider" data-slide-to="1"></li>
+                <li data-target="#themeSlider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" style="margin-top:60px;height:500px">
+                <div class="item active">
+                    <div class="imgOverlay"></div>
+                    <img style="height:500px;width:100%" src="~/Images/imagenSlayer3.png" alt="First slide">
+                    <div class="carousel-caption">
+                        <h3>New</h3>
+
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="imgOverlay"></div>
+                    <img style="height:500px;width:100%" src="~/Images/imagenSlayer1.png" alt="Second slide">
+                    <div class="carousel-caption">
+                        <h3>My Phone</h3>
+
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="imgOverlay"></div>
+                    <img style="height:500px;width:100%" src="~/Images/imagenSlayer2.png" alt="Third slide">
+                    <div class="carousel-caption">
+                        <h3>Latest</h3>
+
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+                <span class="fa fa-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#themeSlider" data-slide="next">
+                <span class="fa fa-chevron-right"></span>
+            </a>
+
+        </div>
+        <div>
+            <hr style="        width: 1300px;
+        height: 10px;
+        margin-top: 50px;
+        margin-bottom: 0px;
+        border-top: 2px solid silver;
+        color: silver;
+        height: 2px;
+        margin-left: 40px;
+        margin-right: 20px;
+" />
+            <br />
+            <center> <span style="font-size: 140%;"> Categorías </span></center>
+            <hr style="        width: 1300px;
+        height: 10px;
+        margin-top: 20px;
+        margin-bottom: 0px;
+        border-top: 2px solid silver;
+        color: silver;
+        height: 2px;
+        margin-left: 40px;
+        margin-right: 20px;
+" />
+        </div>
+
+
+        <div class="row align-center" id="row-1037529297" style="  padding-left: 10px; padding-bottom: 10px; padding-top: 15px; padding-right: 10px; ">
+
+            <div class="col" style="width:449px; height:610px; display:inline-block; margin-top: 10px;">
+                <center> <a style=" color:#000000;" href=@("/Productos/filtrar?nombre="+"Shorts")>Shorts</a></center>
+                <img class="imgCat" style=" width: 429px;height: 590px;
+        padding-left: 5px;
+        margin-left: 20px;
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;" src="~/Content/ImagenesProductos/short.jpg" />
+                <style>
+                    .imgCat {
+                        -moz-transition: all 0.8s;
+                        -webkit-transition: all 0.8s;
+                        transition: all 0.8s;
+                    }
+
+                        .imgCat:hover {
+                            -moz-trasnforms: scale(1.03);
+                            -webkit-transform: scale(1.03);
+                            transform: scale(1.03);
+                        }
+                </style>
+            </div>
+
+            <div class="col" style="width:449px; height:610px; display:inline-block; margin-top: 10px;">
+                <center> <a style=" color:#000000;" href=@("/Productos/filtrar?nombre="+"Enteritos")>Enteritos</a></center>
+                <img class="imgCat" style=" width: 429px;height: 590px;
+        padding-left: 5px;
+        margin-left: 20px;
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;" src="~/Content/ImagenesProductos/enteritos.jpg" />
+            </div>
+
+            <div class="col" style="width:449px; height:610px; display:inline-block; margin-top: 10px;">
+                <center> <a style=" color:#000000;" href=@("/Productos/filtrar?nombre="+"Sweater")>Sweater</a></center>
+                <img class="imgCat" style=" width: 429px;height: 590px;
+        padding-left: 5px;
+        margin-left: 20px;
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;" src="~/Content/ImagenesProductos/Sweater.jpg" />
+            </div>
+
+            <div class="col" style="width:449px; height:610px; display:inline-block; margin-top: 10px;">
+                <center> <a style=" color:#000000;" href=@("/Productos/filtrar?nombre="+"Pantalones")>Pantalones</a></center>
+                <img class="imgCat" style=" width: 429px;height: 590px;
+        padding-left: 5px;
+        margin-left: 20px;
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;" src="~/Content/ImagenesProductos/Pantalones.jpg" />
+            </div>
+
+            <div class="col" style="width:449px; height:610px; display:inline-block; margin-top: 10px;">
+                <center> <a style=" color:#000000;" href=@("/Productos/filtrar?nombre="+"Faldas")>Faldas</a></center>
+                <div class="imagen">
+                    <img class="imgCat" style=" width: 429px;height: 590px;
+                    padding-left: 5px;
+                    margin-left: 20px;
+                    margin-top: 10px;
+                    margin-right: 10px;
+                    margin-bottom: 10px;" src="~/Content/ImagenesProductos/Faldas.jpg" />
+
+                </div>
+
+            </div>
+
+
+            <div class="col" style="width:449px; height:610px; display:inline-block; margin-top: 10px;">
+                <center> <a style=" color:#000000;" href=@("/Productos/filtrar?nombre="+"Blusas")>Blusas</a></center>
+                <img class="imgCat" style=" width: 429px;height: 590px;
+        padding-left: 5px;
+        margin-left: 20px;
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;" src="~/Content/ImagenesProductos/Blusas.jpg" />
+
+            </div>
+
+
+
+
+
+        </div>
+        <hr style="        width: 1300px;
+        height: 10px;
+        margin-top: 50px;
+        margin-bottom: 0px;
+        border-top: 2px solid silver;
+        color: silver;
+        height: 2px;
+        margin-left: 40px;
+        margin-right: 20px;
+" />
+        <center>
+            <div class="redessociales" style="width:1080px; height:89px;">
+                <br />
+                <center><span style="font-size: 140%;">Síguenos En Nuestras Redes Sociales </span></center>
+                <a style="width:240px; height:59px;">
+                    <img src="~/Content/Icons/fb.png" style="width: 60px; height: 60px; margin-top: 20px;" />
+                    <label style=" margin-right: 20px; ">Facebook</label>
+                </a>
+
+                <a>
+                    <img src="~/Content/Icons/in.png" style="width: 60px; height: 60px; margin-top: 20px;" />
+                    <label style=" margin-right: 20px; ">Instagram</label>
+                </a>
+            </div>
+        </center>
+        <hr style="        width: 1300px;
+        height: 10px;
+        margin-top: 50px;
+        margin-bottom: 0px;
+        border-top: 2px solid silver;
+        color: silver;
+        height: 2px;
+        margin-left: 40px;
+        margin-right: 20px;
+" />
+
+
+    </body>
+
+    
+
+

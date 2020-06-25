@@ -1,0 +1,83 @@
+﻿@model IEnumerable<OnlineShoppingStore.Models.DAL.Producto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Producto</li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+           
+
+            @Html.ActionLink("Nuevo Producto", "Create")
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                Foto
+                            </th>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Precio
+                            </th>
+                            <th>
+                                Descripción
+                            </th>
+                            <th>
+                                Categoría
+                            </th>
+                            <th>
+                                Acción
+                            </th>
+                        </tr>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.Foto))
+                                {
+                                    <img src="@Url.Content(item.Foto)" alt="Image" style="width:80px;height:100px;" />
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nombreProducto)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.precio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Categoria.tipoCategoria)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Modificar", "Edit", new { id = item.idProducto }, new { @class = "btn btn-warning" })
+
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.idProducto }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+﻿@using OnlineShoppingStore.Models.DAL;
+@{
+    ViewBag.Title = "DetalleCarrito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@if (Session["cart"] == null)
+{
+    <div class="alert alert-danger">
+        <strong>No product added to cart!</strong>
+    </div>
+
+}
+else
+{
+    <table class="table table-bordered" style="
+    border-top-width: 105px;">
+        <thead>
+            <tr>
+                <th>Prenda</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int Total = 0;
+            }
+
+            @foreach (Carrito item in (List<Carrito>)Session["cart"])
+            {
+                int precio = Convert.ToInt32(item.Productos.precio / 800);
+                Session["Price"] =precio.ToString();
+                int lineTotal = Convert.ToInt32(item.Cantidad * item.Productos.precio);
+                Session["subto"] = decimal.Parse((lineTotal/ 800).ToString());
+                Total = Convert.ToInt32(@Total + lineTotal);
+
+
+
+                Session["SesTotal"] = decimal.Parse((Total/ 800).ToString());
+
+                <tr>
+                    <td>@item.Productos.nombreProducto</td>
+                    <td>@item.Productos.precio</td>
+                    <td>@item.Cantidad</td>
+                    <td>@lineTotal</td>
+                </tr>
+            }
+
+            <tr>
+                <td colspan="4" class="text-right"><b>Total: @Total</b></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="@Url.Action("metodoPaypal", "Paypal")" class="btn btn-success">Pagar >></a>
+
+}
+

@@ -1,0 +1,44 @@
+﻿@model OnlineShoppingStore.Models.CategoryDetail
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item ">Categorías</li>
+        <li class="breadcrumb-item active">Agregar Nueva Categoría</li>
+
+
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Agregar Nueva Categoría
+
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("UpdateCategory", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(m => m.idCategoria)
+
+                <div class="form-group">
+                    <label class="control-label">Nombre Categoria</label>
+
+                    @Html.TextBoxFor(m => m.tipoCategoria, new { @class = "form-control", placeholder = "Enter category Name", required = "required", autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.tipoCategoria, "", new { @class = "text-danger" })
+                </div>
+
+                <a onclick="window.history.back();" class="btn btn-danger">Cancelar</a>
+                <input type="submit" class="btn btn-primary" value="Guardar" />
+            }
+        </div>
+    </div>
+</div>
+
