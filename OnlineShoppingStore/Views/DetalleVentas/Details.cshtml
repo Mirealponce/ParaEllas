@@ -1,0 +1,51 @@
+﻿@model OnlineShoppingStore.Models.DAL.DetalleVenta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetalleVenta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalVentaProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalVentaProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DetalleProducto.Talla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DetalleProducto.Talla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Venta.idVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Venta.idVenta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idDetalleVenta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

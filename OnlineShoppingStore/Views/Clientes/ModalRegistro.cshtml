@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "ModalRegistro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<center>
+    <div style="box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); margin-left: 0px; height: 200px; width: 500px; margin-top: 100px;">
+
+
+        <div class="form-horizontal">
+
+            <br />
+            <br />
+            <div class="form-group">
+                <center>
+                   <h3>Ya existe un usuario registrado con ese correo electrónico.</h3>
+                </center>
+                
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+</center>
+<style>
+    .modal-contenido {
+        background-color: aqua;
+        width: 300px;
+        padding: 10px 20px;
+        margin: 20% auto;
+        position: relative;
+    }
+
+    .modal {
+        background-color: rgba(0,0,0,.8);
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    #miModal:target {
+        opacity: 1;
+        pointer-events: auto;
+    }
+</style>
+

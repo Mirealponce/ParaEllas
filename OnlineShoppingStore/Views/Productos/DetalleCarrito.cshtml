@@ -1,4 +1,5 @@
-﻿@using OnlineShoppingStore.Models.DAL;
+﻿@using OnlineShoppingStore.Models;
+
 @{
     ViewBag.Title = "DetalleCarrito";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -49,6 +50,9 @@ else
                     <td>@item.Cantidad</td>
                     <td>@lineTotal</td>
                 </tr>
+                string name = @item.Productos.nombreProducto[0].ToString();
+                string name2 = @item.Productos.nombreProducto[1].ToString();
+
             }
 
             <tr>
@@ -56,7 +60,7 @@ else
             </tr>
         </tbody>
     </table>
-    <a href="@Url.Action("metodoPaypal", "Paypal")" class="btn btn-success">Pagar >></a>
+    <a href="@("../Paypal/metodoPaypal")" class="btn btn-success">Pagar >></a>
 
 }
 

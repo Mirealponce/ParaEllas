@@ -23,7 +23,11 @@ namespace OnlineShoppingStore.Controllers
         {
             return View(db.Cliente.ToList());
         }
-
+        /// <summary>
+        /// Método que a través del id muestra el perfil del usuario o sus datos datos personales
+        /// </summary>
+        /// <param name="id">id del usuario Cliente en la base de datos</param>
+        /// <returns></returns>
         public ActionResult Perfil(int? id)
         {
             if (id == null)
@@ -38,6 +42,11 @@ namespace OnlineShoppingStore.Controllers
             return View(cliente);
         }
         public ActionResult IniciarSesion()
+        {
+            return View();
+        }
+
+        public ActionResult ModalRegistro()
         {
             return View();
         }
@@ -79,11 +88,7 @@ namespace OnlineShoppingStore.Controllers
         
 
         // GET: Clientes/Details/5
-#pragma warning disable CS0246 // El nombre del tipo o del espacio de nombres 'Cliente' no se encontró (¿falta una directiva using o una referencia de ensamblado?)
-#pragma warning disable CS0246 // El nombre del tipo o del espacio de nombres 'Cliente' no se encontró (¿falta una directiva using o una referencia de ensamblado?)
-        private Cliente ToCliente(Cliente cliente)
-#pragma warning restore CS0246 // El nombre del tipo o del espacio de nombres 'Cliente' no se encontró (¿falta una directiva using o una referencia de ensamblado?)
-#pragma warning restore CS0246 // El nombre del tipo o del espacio de nombres 'Cliente' no se encontró (¿falta una directiva using o una referencia de ensamblado?)
+       private Cliente ToCliente(Cliente cliente)
         {
             return new Cliente
             {
@@ -123,15 +128,23 @@ namespace OnlineShoppingStore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-#pragma warning disable CS0246 // El nombre del tipo o del espacio de nombres 'Cliente' no se encontró (¿falta una directiva using o una referencia de ensamblado?)
+
         public ActionResult Create([Bind(Include = "idCliente,nombre,apellido,correo,pass")] Cliente cliente)
-#pragma warning restore CS0246 // El nombre del tipo o del espacio de nombres 'Cliente' no se encontró (¿falta una directiva using o una referencia de ensamblado?)
+
         {
             if (ModelState.IsValid)
             {
-                db.Cliente.Add(cliente);
-                db.SaveChanges();
-               return RedirectToAction("../Clientes/IniciarSesion");
+                var result = db.Cliente.Where(c=>c.correo.Equals(cliente.correo)).FirstOrDefault();
+                if (result==null)
+                {
+                    db.Cliente.Add(cliente);
+                    db.SaveChanges();
+                    return RedirectToAction("../Clientes/IniciarSesion");
+                }else if (result!=null)
+                {
+                    return RedirectToAction("../Clientes/ModalRegistro");
+                }
+               
             }
 
             return View(cliente);

@@ -1,4 +1,5 @@
 ﻿using OnlineShoppingStore.Models;
+using OnlineShoppingStore.Models.DAL;
 using PayPal.Api;
 using System;
 using System.Collections.Generic;
@@ -45,8 +46,7 @@ namespace OnlineShoppingStore.Controllers
                   
                  }
                  else
-                 {
-                                
+                 { 
                                   var guid = Request.Params["guid"];
                                   var executedPayment = ExecutePayment(apiContext, payerId, Session[guid] as string);
                                 
@@ -63,14 +63,34 @@ namespace OnlineShoppingStore.Controllers
                 ViewBag.Result = ex.Message;
                  return View("ErrorTransaccion");
              }
+            
 
             ViewBag.Result = "Exitoo";
-            return View("Exito"); 
+            //if (Session["cart"] != "")
+            //{
+                int totalVenta;
+                DateTime fecha_venta;
+                int idCliente;
+
+                List<Models.Carrito> cart = (List<Models.Carrito>)(Session["cart"]);
+               // foreach (var item in cart)
+                //{
+
+                    totalVenta = Convert.ToInt32(Session["SesTotal"].ToString());
+                    fecha_venta = Convert.ToDateTime("2020-06-19");
+                    idCliente = 1;
+
+                    return Redirect("../Venta/Create/totalventa=" + totalVenta); 
+               // }
+
+
+           // }
+
+           // return View("Exito"); 
         }
 
-
-
        
+
         private Payment ExecutePayment(APIContext apiContext, string payerId, string paymentId)
         {
             var paymentExecution = new PaymentExecution()
