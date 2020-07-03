@@ -15,81 +15,62 @@ namespace OnlineShoppingStore.Controllers
         public ActionResult metodoPaypal()
         {
             APIContext apiContext = PaypalConfiguration.GetAPIContext();
-             try
-             {
-               
-                 string payerId = Request.Params["PayerID"];
-                 if (string.IsNullOrEmpty(payerId))
-                 {
-                   
-                    
-                     string baseURI = Request.Url.Scheme + "://" + Request.Url.Authority + "/Paypal/metodoPaypal?";
-                     var Guid = Convert.ToString((new Random()).Next(100000));
-                   
-                     var createdPayment = this.CreatePayment(apiContext, baseURI + "guid=" + Guid);
-                  
-                     var link = createdPayment.links.GetEnumerator();
-                     string paypalRedirectUrl = null;
-                     while (link.MoveNext())
-                     {
-                         Links lnk = link.Current;
-                         if (lnk.rel.ToLower().Trim().Equals("approval_url"))
-                         {
-                            
-                             paypalRedirectUrl = lnk.href;
-                         }
-                     }
+            try
+            {
 
-                     // saving the paymentID in the key guid
-                     Session.Add(Guid, createdPayment.id);
-                     return Redirect(paypalRedirectUrl);
-                  
-                 }
-                 else
-                 { 
-                                  var guid = Request.Params["guid"];
-                                  var executedPayment = ExecutePayment(apiContext, payerId, Session[guid] as string);
-                                
-                                 if (executedPayment.state.ToLower() != "approved")
-                                 {
+                string payerId = Request.Params["PayerID"];
+                if (string.IsNullOrEmpty(payerId))
+                {
 
-                                     return View("ErrorTransaccion");
-                                 }
-                              
-                 }
-             }
-             catch (Exception ex)
-             {
+
+                    string baseURI = Request.Url.Scheme + "://" + Request.Url.Authority + "/Paypal/metodoPaypal?";
+                    var Guid = Convert.ToString((new Random()).Next(100000));
+
+                    var createdPayment = this.CreatePayment(apiContext, baseURI + "guid=" + Guid);
+
+                    var link = createdPayment.links.GetEnumerator();
+                    string paypalRedirectUrl = null;
+                    while (link.MoveNext())
+                    {
+                        Links lnk = link.Current;
+                        if (lnk.rel.ToLower().Trim().Equals("approval_url"))
+                        {
+
+                            paypalRedirectUrl = lnk.href;
+                        }
+                    }
+
+                    // saving the paymentID in the key guid
+                    Session.Add(Guid, createdPayment.id);
+                    return Redirect(paypalRedirectUrl);
+
+                }
+                else
+                {
+
+                    var guid = Request.Params["guid"];
+                    var executedPayment = ExecutePayment(apiContext, payerId, Session[guid] as string);
+
+                    if (executedPayment.state.ToLower() != "approved")
+                    {
+
+                        return View("ErrorTransaccion");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
                 ViewBag.Result = ex.Message;
-                 return View("ErrorTransaccion");
-             }
-            
+                return View("ErrorTransaccion");
+            }
 
             ViewBag.Result = "Exitoo";
-            //if (Session["cart"] != "")
-            //{
-                int totalVenta;
-                DateTime fecha_venta;
-                int idCliente;
-
-                List<Models.Carrito> cart = (List<Models.Carrito>)(Session["cart"]);
-               // foreach (var item in cart)
-                //{
-
-                    totalVenta = Convert.ToInt32(Session["SesTotal"].ToString());
-                    fecha_venta = Convert.ToDateTime("2020-06-19");
-                    idCliente = 1;
-
-                    return Redirect("../Venta/Create/totalventa=" + totalVenta); 
-               // }
-
-
-           // }
-
-           // return View("Exito"); 
+            return View("Exito");
         }
 
-       
+
+
 
         private Payment ExecutePayment(APIContext apiContext, string payerId, string paymentId)
         {
@@ -115,19 +96,19 @@ namespace OnlineShoppingStore.Controllers
                 items = new List<Item>()
             };
 
-            if (Session["cart"]!="")
+            if (Session["cart"] != "")
             {
-                List<Models.Carrito> cart = (List <Models.Carrito>)(Session["cart"]);
+                List<Models.Carrito> cart = (List<Models.Carrito>)(Session["cart"]);
                 foreach (var item in cart)
                 {
                     ItemList.items.Add(
                         new Item()
                         {
                             name = item.Productos.nombreProducto.ToString(),
-                            currency="USD",
-                            price= Session["Price"].ToString(),
-                            quantity=item.Cantidad.ToString(),
-                            sku="sku"
+                            currency = "USD",
+                            price = item.Productos.precio.ToString(),
+                            quantity = item.Cantidad.ToString(),
+                            sku = "sku"
 
 
                         });
@@ -142,23 +123,23 @@ namespace OnlineShoppingStore.Controllers
                     return_url = redirectUrl
                 };
 
-              
+
 
                 var details = new Details()
                 {
                     tax = "0",
                     shipping = "0",
                     subtotal = Session["subto"].ToString(),
-                    
+
                 };
 
                 var amount = new Amount()
                 {
                     currency = "USD",
-                    
+
                     total = Session["SesTotal"].ToString(),
                     details = details,
-                    
+
                 };
 
                 var transactionList = new List<Transaction>();
@@ -182,9 +163,9 @@ namespace OnlineShoppingStore.Controllers
             }
 
             return this.payment.Create(apiContext);
-            
 
-           
+
+
 
 
 

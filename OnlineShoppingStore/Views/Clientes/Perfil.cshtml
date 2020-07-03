@@ -4,51 +4,76 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+    <div>
+        <center>
+            <h2 style="        margin-top: 100px;
+
+        ">
+                Infomación
+            </h2>
+            <hr style=" margin-left: 60px; margin-right: 60px; " />
+        </center>
+    </div>
+        <style>
+            .inf{
     
-        <h2 style="        margin-top: 80px;
-        margin-left: 100px;">Infomación</h2>
+            font-size:medium;
+            }
+            .form-control {
+                width: 326px;   
+            }
+        </style>
+        <center>
+            <div style="box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); margin-left: 0px; height: 330px; width: 800px; padding-top: 30px; ">
+                <center>
+                    
+                    <dl class="dl-horizontal">
+                        <dt class="inf">
+                            <label>Nombre</label>
+                        </dt>
 
-        <div>
-           
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    <label>Nombre: </label>
-                </dt>
+                        <dd>
+                            <input class="form-control" id="nombre" name="nombre" type="text" value=@(Model.nombre)
+                                   disabled="disabled">
+                        </dd>
+                        <br />
 
-                <dd>
-                    @Html.DisplayFor(model => model.nombre)
-                </dd>
+                        <dt class="inf">
+                            <label>Apellido</label>
+                        </dt>
 
-                <dt>
-                    <label>Apellido: </label>
-                </dt>
+                        <dd>
+                            <input class="form-control" id="apellido" name="apellido" type="text" value=@(Model.apellido)
+                                   disabled="disabled">
+                        </dd>
+                        <br />
 
-                <dd>
-                    @Html.DisplayFor(model => model.apellido)
-                </dd>
+                        <dt class="inf">
+                            <label>Correo  </label><br />
+                            <label>Electrónico</label>
+                        </dt>
 
-                <dt>
-                    <label>Correo  </label><br />
-                    <label>Electrónico:</label>
-                </dt>
+                        <dd>
+                            <input class="form-control" id="correo" name="correo" type="text" value=@(Model.correo)
+                                   disabled="disabled">
+                        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.correo)
-                </dd>
+                        <dt class="inf">
+                            <label>Contraseña </label>
+                        </dt>
 
-                <dt>
-                    <label>Contraseña:  </label>
-                </dt>
+                        <dd>
+                            <input class="form-control" id="pass" name="pass" type="text" value=@(Model.pass)
+                                   disabled="disabled">
+                        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.pass)
-                </dd>
-
-            </dl>
+                    </dl>
+                   
+                </center>
 
 
-            @Html.ActionLink("Agregar telefono", "Create", "telefonos", new { id = Model.idCliente }, new { @class = "btn btn-warning" })
-            @Html.ActionLink("Agregar Dirección", "Create", "Direccion", new { id = Model.idCliente }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Agregar telefono", "Create", "telefonos", new { id = Model.idCliente }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Agregar Dirección", "Create", "Direccion", new { id = Model.idCliente }, new { @class = "btn btn-warning" })
 
-        </div>
+            </div>
+        </center>

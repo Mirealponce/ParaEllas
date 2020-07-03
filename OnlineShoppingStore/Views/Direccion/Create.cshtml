@@ -11,14 +11,33 @@
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
 </head>
+
 <body>
+    <div>
+        <center>
+            <h2 style="        margin-top: 100px;
+
+        ">
+                Agregar Direcciones
+            </h2>
+            <hr style=" margin-left: 60px; margin-right: 60px; " />
+        </center>
+    </div>
+    <style>
+        .control-label {
+            font-size: medium;
+        }
+
+        .form-control {
+            width: 326px;
+        }
+    </style>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Direccion</h4>
-            <hr />
+
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(model => model.region, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -52,11 +71,12 @@
                 </div>
             </div>
 
-           
+
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Siguiente" class="btn btn-default" />
+                    <input type="submit" value="Agregar
+                           " class="btn btn-warning" />
                 </div>
             </div>
         </div>
@@ -72,8 +92,6 @@
                value="@ViewBag.Cliente_idCliente " />
     }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+   
 </body>
 </html>

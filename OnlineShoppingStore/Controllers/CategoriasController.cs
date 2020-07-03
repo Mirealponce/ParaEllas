@@ -54,7 +54,7 @@ namespace OnlineShoppingStore.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "idCategoria,tipoCategoria")] Categoria categoria)
+        public  ActionResult Create([Bind(Include = "idCategoria,tipoCategoria")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {

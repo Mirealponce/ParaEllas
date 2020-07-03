@@ -39,7 +39,7 @@
                 </ul>
                 <p align="right">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown" >
+                        <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="../Productos/DetalleCarrito" style=" color:black;
                                 ">Carrito <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -47,19 +47,22 @@
                                 {
                                     foreach (Carrito item in (List<Carrito>)Session["cart"])
                                     {
-                    <li><a href="../Productos/DetalleCarrito">@item.Productos.nombreProducto (@item.Cantidad)</a></li>}
-                                }
+                                 <li><a href="../Productos/DetalleCarrito">@item.Productos.nombreProducto (@item.Cantidad)</a></li>
+}
+                                 }
                                 <li class="divider"></li>
 
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="/Clientes/IniciarSesion"><img src="~/Content/Icons/usuario.png" width="24" height="24" /></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/Clientes/IniciarSesion">Iniciar Sesión</a></li>
-                            </ul>
-                        </li>
-                        
+                       
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="/Clientes/IniciarSesion"><img src="~/Content/Icons/usuario.png" width="24" height="24" /></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="/Clientes/IniciarSesion">Iniciar Sesión</a></li>
+                           
+                        </ul>
+                    </li> 
                     </ul>
                 </p>
                 <!-- Html.Partial("_LoginPartial")-->

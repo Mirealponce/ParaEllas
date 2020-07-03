@@ -3,52 +3,55 @@
     ViewBag.Title = "PanelCliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (ViewBag.idCliente != null)
+{
 
-<div >
-    <center>
-        <h2 style="margin-top: 100px;">
-            Perfil
-            <hr style=" margin-left: 60px; margin-right: 60px; " />
-        </h2>
-    </center>
-</div>
-<div style=" margin-top: 50px; ">
 
-    <div style="margin-left: 100px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); width: 300px; height: 110px;">
+    <div>
         <center>
-            <img src="~/Content/Icons/informacion.png" style=" margin-top: 20px; " /><br /><br />
-            <a href=@("/Clientes/Perfil/")@ViewBag.idCliente>
-                <label style="color:black;">Mis Datos</label>
-            </a>
+            <h2 style="margin-top: 100px;">
+                Perfil
+                <hr style=" margin-left: 60px; margin-right: 60px; " />
+            </h2>
         </center>
     </div>
+    <div style=" margin-top: 50px; ">
 
-    <a href=@("/telefonos/TelefonosContacto/")@ViewBag.idCliente>
-        <div style="margin-left: 500px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); width: 300px; height: 110px; margin-top: -110px;">
+        <div style="margin-left: 100px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); width: 300px; height: 110px;">
             <center>
-                <img src="~/Content/Icons/llamada.png" style=" margin-top: 20px; " /><br /><br />
-                <label style="color:black;">Teléfonos de Contacto</label>
+                <img src="~/Content/Icons/informacion.png" style=" margin-top: 20px; " /><br /><br />
+                <a href=@("/Clientes/Perfil/")@ViewBag.idCliente>
+                    <label style="color:black;">Mis Datos</label>
+                </a>
             </center>
         </div>
-    </a>
-    <a href=@("/Direccion/MisDireccions/")@ViewBag.idCliente>
-        <div style="margin-left: 900px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); width: 300px; height: 110px; margin-top: -110px;">
-            <center>
-                <img src="~/Content/Icons/ubicacion (1).png" style=" margin-top: 20px; " /><br /><br />
-                <label style="color:black;">Mis Direcciones</label>
-            </center>
-        </div>
-    </a>
-    <a href="/Clientes/IniciarSesion">
-        <div style="margin-left: 100px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); width: 300px; height: 110px; margin-top: 100px;">
-            <center>
-                <img src="~/Content/Icons/compras.png" style=" margin-top: 20px; " /><br /><br />
-                <label style="color:black;">Mis Compras</label>
-            </center>
-        </div>
-    </a>
-</div>
-<input style="
+
+        <a href=@("/telefonos/TelefonosContacto/")@ViewBag.idCliente>
+            <div style="margin-left: 500px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); width: 300px; height: 110px; margin-top: -110px;">
+                <center>
+                    <img src="~/Content/Icons/llamada.png" style=" margin-top: 20px; " /><br /><br />
+                    <label style="color:black;">Teléfonos de Contacto</label>
+                </center>
+            </div>
+        </a>
+        <a href=@("/Direccion/MisDireccions/")@ViewBag.idCliente>
+            <div style="margin-left: 900px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); width: 300px; height: 110px; margin-top: -110px;">
+                <center>
+                    <img src="~/Content/Icons/ubicacion (1).png" style=" margin-top: 20px; " /><br /><br />
+                    <label style="color:black;">Mis Direcciones</label>
+                </center>
+            </div>
+        </a>
+        <a href="/Clientes/IniciarSesion">
+            <div style="margin-left: 100px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); width: 300px; height: 110px; margin-top: 100px;">
+                <center>
+                    <img src="~/Content/Icons/compras.png" style=" margin-top: 20px; " /><br /><br />
+                    <label style="color:black;">Mis Compras</label>
+                </center>
+            </div>
+        </a>
+    </div>
+    <input style="
         width: 8px;
         height: 6px;
         border-left-width: 0px;
@@ -56,5 +59,34 @@
         border-right-width: 0px;
         border-bottom-width: 0px;
     " id="idCliente" name="idCliente" type="text"
-       value="@ViewBag.idCliente " />
+           value="@ViewBag.idCliente " />
 
+}
+else
+{
+    <center>
+        <div style="box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); margin-left: 0px; height: 200px; width: 500px; margin-top: 100px;">
+
+
+            <div class="form-horizontal">
+
+                <br />
+                <br />
+                <div class="form-group">
+                    <center>
+                        <h3>Debe Iniciar Sesión</h3>
+                    </center>
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+    </center>
+}

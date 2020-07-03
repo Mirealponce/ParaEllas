@@ -2,45 +2,68 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 
-<h2>Index</h2>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Ventas</li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.totalVenta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha_venta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente.nombre)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.totalVenta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_venta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cliente.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idVenta }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idVenta }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idVenta })
-        </td>
-    </tr>
-}
+            @Html.ActionLink("Nueva Venta", "Create")
+        </div>
 
-</table>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.totalVenta)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.fecha_venta)
+                            </th>
+                            <th>
+                                <label>Cliente</label>
+
+                            </th>
+                            <th>
+                                Acción
+                            </th>
+                        </tr>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.totalVenta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fecha_venta)
+                                </td>
+                                <td>
+
+                                    @Html.DisplayFor(modelItem => item.Cliente.nombre)
+                                    @Html.DisplayFor(modelItem => item.Cliente.apellido)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Modificar", "Edit", new { id = item.idVenta }, new { @class = "btn btn-warning" }) 
+                                 
+                                    
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -44,7 +44,8 @@ namespace OnlineShoppingStore.Controllers
         {
             idClientfk = id;
             ViewBag.idCliente = id;
-           // ViewBag.Cliente_idCliente = new SelectList(db.Cliente, "idCliente", "nombre");
+            Session["idCliente"] = id;
+            // ViewBag.Cliente_idCliente = new SelectList(db.Cliente, "idCliente", "nombre");
             return View();
         }
 
@@ -62,7 +63,7 @@ namespace OnlineShoppingStore.Controllers
                //var tel = this.ToTelefono(telefono,idClientfk);
                 db.telefono.Add(telefono);
                 db.SaveChanges();
-                return RedirectToAction("../Productos/IndexClient");
+                return RedirectToAction("../Clientes/PanelCliente/" + Session["idCliente"]);
             }
 
             //ViewBag.Cliente_idCliente = new SelectList(db.Cliente, "idCliente", "nombre", telefono.Cliente_idCliente);
@@ -104,7 +105,9 @@ namespace OnlineShoppingStore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Cliente_idCliente = new SelectList(db.Cliente, "idCliente", "nombre", telefono.Cliente_idCliente);
+            ViewBag.Cliente_idCliente = telefono.Cliente_idCliente;
+
+            Session["idCliente"] = telefono.Cliente_idCliente;
             return View(telefono);
         }
 
@@ -121,9 +124,9 @@ namespace OnlineShoppingStore.Controllers
             {
                 db.Entry(telefono).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Clientes/PanelCliente/" + Session["idCliente"]);
             }
-            ViewBag.Cliente_idCliente = new SelectList(db.Cliente, "idCliente", "nombre", telefono.Cliente_idCliente);
+            ViewBag.Cliente_idCliente = telefono.Cliente_idCliente;
             return View(telefono);
         }
 

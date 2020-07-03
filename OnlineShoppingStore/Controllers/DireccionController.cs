@@ -43,9 +43,11 @@ namespace OnlineShoppingStore.Controllers
             return View(filtro);
         }
 
+        int IDclient;
         // GET: Direccion/Create
         public ActionResult Create(int id)
         {
+            Session["idCliente"] = id.ToString();
             ViewBag.Cliente_idCliente = id;
             return View();
         }
@@ -63,7 +65,7 @@ namespace OnlineShoppingStore.Controllers
             {
                 db.Direccion.Add(direccion);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Clientes/PanelCliente/" + Session["idCliente"]);
             }
 
             ViewBag.Cliente_idCliente = direccion.Cliente_idCliente;
@@ -82,7 +84,8 @@ namespace OnlineShoppingStore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Cliente_idCliente = new SelectList(db.Cliente, "idCliente", "nombre", direccion.Cliente_idCliente);
+            Session["idCliente"] = direccion.Cliente_idCliente;
+            ViewBag.Cliente_idCliente =  direccion.Cliente_idCliente;
             return View(direccion);
         }
 
@@ -99,9 +102,9 @@ namespace OnlineShoppingStore.Controllers
             {
                 db.Entry(direccion).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Clientes/PanelCliente/" + Session["idCliente"]);
             }
-            ViewBag.Cliente_idCliente = new SelectList(db.Cliente, "idCliente", "nombre", direccion.Cliente_idCliente);
+            ViewBag.Cliente_idCliente =  direccion.Cliente_idCliente;
             return View(direccion);
         }
 

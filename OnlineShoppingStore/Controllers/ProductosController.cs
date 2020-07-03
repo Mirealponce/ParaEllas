@@ -21,12 +21,12 @@ namespace OnlineShoppingStore.Controllers
         private ConexionVentas db = new ConexionVentas();
 
         // GET: Productos
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var producto = db.Producto.Include(p => p.Categoria);
             
 
-            return View(await producto.ToListAsync());
+            return View(producto.ToList());
         }
         //filtro por categoria
         public async Task<ActionResult> OrdenarPorCategoria()
