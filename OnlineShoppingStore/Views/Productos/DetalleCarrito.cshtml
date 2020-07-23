@@ -9,9 +9,29 @@
 
 @if (Session["cart"] == null)
 {
-    <div class="alert alert-danger">
-        <strong>Carrito Vacío</strong>
-    </div>
+    <center>
+        <div style="box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); margin-left: 0px; height: 200px; width: 500px; margin-top: 100px;">
+
+
+            <div class="form-horizontal">
+
+                <br />
+                <br />
+                <div class="form-group">
+                    <center>
+                        <h3>Carrito vacío.</h3>
+                    </center>
+
+                </div>
+
+                <a href="/Productos/IndexClient" class="btn btn-success">OK</a>
+
+
+            </div>
+
+
+        </div>
+    </center>
 
 }
 else
@@ -70,6 +90,7 @@ else
         </tbody>
     </table>
 </center>
+
 <center><a href="@("../Paypal/metodoPaypal")" class="btn btn-success">Pagar >></a></center>
 
 }

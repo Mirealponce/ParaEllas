@@ -1,52 +1,80 @@
 ﻿@model IEnumerable<OnlineShoppingStore.Models.DAL.DetalleProducto>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "Index";
+  Layout = "~/Views/Shared/_AdminLayout.cshtml"; 
+    }
 
-<h2>Index</h2>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Producto</li>
+    </ol>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Talla)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CantidadStock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Producto.nombreProducto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Producto.precio)
-        </th>
-        <th></th>
-    </tr>
+            @Html.ActionLink("Nuevo Stock", "Create")
+        </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Talla)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CantidadStock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Producto.nombreProducto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Producto.precio)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.idDetalleProducto }) |
-            @Html.ActionLink("Details", "Details", new { id = item.idDetalleProducto }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.idDetalleProducto })
-        </td>
-    </tr>
-}
 
-</table>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                Talla
+                            </th>
+                            <th>
+                                Stock
+                            </th>
+                            <th>
+                                Producto
+                            </th>
+                            <th>
+                                Precio
+                            </th>
+                            <th>Acción</th>
+                        </tr>
+
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Talla)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadStock)
+                </td>
+
+                <td>
+                    <center>
+                        @if (!string.IsNullOrEmpty(item.Producto.Foto))
+                        {
+                    <img src="@Url.Content(item.Producto.Foto)" alt="Image" style="width:60px;height:80px;" />}
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Producto.nombreProducto)
+                    </center>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.precio)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idDetalleProducto }, new { @class = "btn btn-warning" }) 
+                  
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.idDetalleProducto }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

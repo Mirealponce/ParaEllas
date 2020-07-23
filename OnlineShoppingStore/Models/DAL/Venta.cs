@@ -31,5 +31,13 @@ namespace OnlineShoppingStore.Models.DAL
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }
+
+        public string DatosComboVenta
+        {
+            get
+            {
+                return string.Format("{0} {1}", "Cód: ", idVenta);
+            }
+        }
     }
 }

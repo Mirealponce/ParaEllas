@@ -11,7 +11,8 @@ namespace OnlineShoppingStore.Models.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,9 +24,13 @@ namespace OnlineShoppingStore.Models.DAL
         }
     
         public int idCliente { get; set; }
+        [Required]
         public string nombre { get; set; }
+        [Required]
         public string apellido { get; set; }
+        [Required]
         public string correo { get; set; }
+        [Required]
         public string pass { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

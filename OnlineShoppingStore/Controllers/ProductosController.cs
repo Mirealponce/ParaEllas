@@ -23,12 +23,16 @@ namespace OnlineShoppingStore.Controllers
         // GET: Productos
         public ActionResult Index()
         {
+            if (Session["sesion"] == null)
+            {
+                return Redirect("~/Clientes/IniciarSesion?mensaje=1");
+            }
             var producto = db.Producto.Include(p => p.Categoria);
             
 
             return View(producto.ToList());
         }
-        //filtro por categoria
+        //ORDENAR PRECIO
         public async Task<ActionResult> OrdenarPorCategoria()
         {
             var productos = from p in db.Producto
@@ -37,9 +41,12 @@ namespace OnlineShoppingStore.Controllers
             return View(productos);
        
         }
+        
+        //FILTRAR POR CATEGORÍA
         public async Task<ActionResult> filtrar(string nombre)
         {
             var filtro = db.Producto.Where(tipo => tipo.Categoria.tipoCategoria.Equals(nombre));
+           
             return View(filtro);
         }
 
@@ -167,32 +174,36 @@ namespace OnlineShoppingStore.Controllers
             };
         }
 
-        private Producto ToView(Producto vistaProducto)
+        private ProductoVista ToView(Producto producto)
         {
             return new ProductoVista
             {
 
-                idProducto = vistaProducto.idProducto,
-                Foto = vistaProducto.Foto,
-                nombreProducto = vistaProducto.nombreProducto,
-                precio = vistaProducto.precio,
-                Descripcion = vistaProducto.Descripcion,
+                idProducto = producto.idProducto,
+                Foto = producto.Foto,
+                nombreProducto = producto.nombreProducto,
+                precio = producto.precio,
+                Descripcion = producto.Descripcion,
 
-                Categoria_idCategoria = vistaProducto.Categoria_idCategoria
+                Categoria_idCategoria = producto.Categoria_idCategoria
             };
         }
         // GET: Productos/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+           
             Producto producto = db.Producto.Find(id);
+           
             if (producto == null)
             {
                 return HttpNotFound();
+          
             }
+
             ViewBag.Categoria_idCategoria = new SelectList(db.Categoria, "idCategoria", "tipoCategoria", producto.Categoria_idCategoria);
             var view = this.ToView(producto);
             return View(view);
@@ -203,12 +214,12 @@ namespace OnlineShoppingStore.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idProducto,Foto,nombreProducto,precio,Descripcion,Categoria_idCategoria")] ProductoVista producto)
+        public async Task<ActionResult> Edit( ProductoVista producto)
         {
             if (ModelState.IsValid)
             {
 
-                var pic = string.Empty;
+                var pic = producto.Foto;
                 var folder = "~/Content/ImagenesProductos";
 
                 if (producto.fotoFile != null)
@@ -220,7 +231,7 @@ namespace OnlineShoppingStore.Controllers
                 var productos = this.ToProducto(producto,pic);
 
                 db.Entry(productos).State = EntityState.Modified;
-                db.SaveChanges();
+               await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.Categoria_idCategoria = new SelectList(db.Categoria, "idCategoria", "tipoCategoria", producto.Categoria_idCategoria);

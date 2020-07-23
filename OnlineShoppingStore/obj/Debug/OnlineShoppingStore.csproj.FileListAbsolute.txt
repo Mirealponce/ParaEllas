@@ -355,3 +355,4 @@ C:\Users\Mirea\OneDrive\Escritorio\ParaEllas\OnlineShoppingStore\obj\Debug\Onlin
 C:\Users\Mirea\OneDrive\Escritorio\ParaEllas\OnlineShoppingStore\obj\Debug\OnlineShoppingStore.csproj.CopyComplete
 C:\Users\Mirea\OneDrive\Escritorio\ParaEllas\OnlineShoppingStore\obj\Debug\OnlineShoppingStore.dll
 C:\Users\Mirea\OneDrive\Escritorio\ParaEllas\OnlineShoppingStore\obj\Debug\OnlineShoppingStore.pdb
+C:\Users\Mirea\OneDrive\Escritorio\ParaEllas\OnlineShoppingStore\bin\DotNet.Highcharts.dll

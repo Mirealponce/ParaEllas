@@ -4,11 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <center><h2 style=" margin-top: 100px; ">Iniciar Sesión con Su Cuenta <hr style=" margin-left: 60px; margin-right: 60px; " /></h2></center>
-
+<center><h2 style=" margin-top: 100px; ">Iniciar Sesión con Su Cuenta <hr style=" margin-left: 60px; margin-right: 60px; " /></h2></center>
+@Html.Raw(TempData["msg"])
 <form action="IniciarSesion" method="post">
 
-  
+
     <center>
         <div style="box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); margin-left: 0px; height: 250px; width: 800px;">
 
@@ -19,12 +19,12 @@
                 <br />
                 <div class="form-group">
                     <center>
-                        <label class="control-label col-md-2" for="Nombre_" style=" margin-left: 100px;padding-left: 0px;"> Correo electrónico </label>
+                        <label class="control-label col-md-2" for="Nombre_" style=" margin-left: 100px;padding-left: 0px;" > Correo electrónico </label>
                     </center>
                     <br />
                     <div class="col-md-10">
                         <input class="form-control text-box single-line" id="usuario" name="usuario" type="text"
-                               style=" width: 326px; margin-top: -25px; margin-left: 100px; " />
+                               style=" width: 326px; margin-top: -25px; margin-left: 100px; " required/>
 
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <br />
                     <div class="col-md-10">
                         <input class="form-control text-box single-line" id="pass" type="password" name="pass"
-                               style=" width: 326px; margin-top: -25px; margin-left: 100px; " />
+                               style=" width: 326px; margin-top: -25px; margin-left: 100px; " required/>
 
                     </div>
                 </div>

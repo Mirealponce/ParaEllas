@@ -3,6 +3,11 @@
     ViewBag.Title = "PanelCliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using (Html.BeginForm("cerrarsesion", "Clientes", FormMethod.Get, new { enctype = "multipart/form-data" }))
+{
+
+<br />
+                <a href="~/Clientes/cerrarsesion" class="btn btn-danger navbar-right">Cerrar Sesión</a>}
 @if (ViewBag.idCliente != null)
 {
 

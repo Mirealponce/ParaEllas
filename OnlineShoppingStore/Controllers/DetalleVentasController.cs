@@ -39,8 +39,8 @@ namespace OnlineShoppingStore.Controllers
         // GET: DetalleVentas/Create
         public ActionResult Create()
         {
-            ViewBag.DetalleProducto_idDetalleProducto = new SelectList(db.DetalleProducto, "idDetalleProducto", "Talla");
-            ViewBag.Venta_idVenta = new SelectList(db.Venta, "idVenta", "idVenta");
+            ViewBag.DetalleProducto_idDetalleProducto = new SelectList(db.DetalleProducto, "idDetalleProducto", "DatosCombo");
+            ViewBag.Venta_idVenta = new SelectList(db.Venta, "idVenta", "DatosComboVenta");
             return View();
         }
 
@@ -58,8 +58,8 @@ namespace OnlineShoppingStore.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DetalleProducto_idDetalleProducto = new SelectList(db.DetalleProducto, "idDetalleProducto", "Talla", detalleVenta.DetalleProducto_idDetalleProducto);
-            ViewBag.Venta_idVenta = new SelectList(db.Venta, "idVenta", "idVenta", detalleVenta.Venta_idVenta);
+            ViewBag.DetalleProducto_idDetalleProducto = new SelectList(db.DetalleProducto, "idDetalleProducto", "DatosCombo", detalleVenta.DetalleProducto_idDetalleProducto);
+            ViewBag.Venta_idVenta = new SelectList(db.Venta, "idVenta", "DatosComboVenta", detalleVenta.Venta_idVenta);
             return View(detalleVenta);
         }
 
@@ -75,8 +75,8 @@ namespace OnlineShoppingStore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DetalleProducto_idDetalleProducto = new SelectList(db.DetalleProducto, "idDetalleProducto", "Talla", detalleVenta.DetalleProducto_idDetalleProducto);
-            ViewBag.Venta_idVenta = new SelectList(db.Venta, "idVenta", "idVenta", detalleVenta.Venta_idVenta);
+            ViewBag.DetalleProducto_idDetalleProducto = new SelectList(db.DetalleProducto, "idDetalleProducto", "DatosCombo", detalleVenta.DetalleProducto_idDetalleProducto);
+            ViewBag.Venta_idVenta = new SelectList(db.Venta, "idVenta", "DatosComboVenta", detalleVenta.Venta_idVenta);
             return View(detalleVenta);
         }
 
@@ -93,8 +93,8 @@ namespace OnlineShoppingStore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DetalleProducto_idDetalleProducto = new SelectList(db.DetalleProducto, "idDetalleProducto", "Talla", detalleVenta.DetalleProducto_idDetalleProducto);
-            ViewBag.Venta_idVenta = new SelectList(db.Venta, "idVenta", "idVenta", detalleVenta.Venta_idVenta);
+            ViewBag.DetalleProducto_idDetalleProducto = new SelectList(db.DetalleProducto, "idDetalleProducto", "DatosCombo", detalleVenta.DetalleProducto_idDetalleProducto);
+            ViewBag.Venta_idVenta = new SelectList(db.Venta, "idVenta", "DatosComboVenta", detalleVenta.Venta_idVenta);
             return View(detalleVenta);
         }
 

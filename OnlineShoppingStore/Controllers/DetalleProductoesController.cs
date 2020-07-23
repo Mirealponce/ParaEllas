@@ -27,12 +27,19 @@ namespace OnlineShoppingStore.Controllers
             return View();
         }
 
+
         public ActionResult detalleProducto( int id)
         {
+            //SENTENCIA LINQ PARA MOSTRAR EL DETALLE DEL PRODUCTO
             var filtro = db.DetalleProducto.Where(detalle => detalle.Producto_idProducto==id);
             ViewBag.Producto_talla = new SelectList(filtro, "Talla", "Talla");
             return View(filtro);
         }
+
+
+
+
+
         // GET: DetalleProductoes/Details/5
         public ActionResult Details(int? id)
         {
@@ -51,6 +58,8 @@ namespace OnlineShoppingStore.Controllers
         // GET: DetalleProductoes/Create
         public ActionResult Create()
         {
+           // Producto prod = new Producto();
+            
             ViewBag.Producto_idProducto = new SelectList(db.Producto, "idProducto", "nombreProducto");
             return View();
         }
@@ -87,7 +96,7 @@ namespace OnlineShoppingStore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Producto_idProducto = new SelectList(db.Producto, "idProducto", "Foto", detalleProducto.Producto_idProducto);
+            ViewBag.Producto_idProducto = new SelectList(db.Producto, "idProducto", "nombreProducto", detalleProducto.Producto_idProducto);
             return View(detalleProducto);
         }
 

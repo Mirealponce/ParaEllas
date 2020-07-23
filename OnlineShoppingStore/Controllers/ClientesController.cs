@@ -43,6 +43,15 @@ namespace OnlineShoppingStore.Controllers
         }
         public ActionResult IniciarSesion()
         {
+            if (Request.Params["mensaje"] != null)
+            {
+                string mensaje = Request.Params["mensaje"];
+                if (mensaje == "1")
+                {
+                    TempData["msg"] = "<script>alert('Debe iniciar sesión');</script>";
+                }
+            }
+
             return View();
         }
 
@@ -51,37 +60,60 @@ namespace OnlineShoppingStore.Controllers
             return View();
         }
 
-        public ActionResult PanelCliente(int? id)
+        public ActionResult PanelCliente()
         {
-            ViewBag.idCliente = id;
+            if (Session["sesion"] == null)
+            {
+                return Redirect("~/Cliente/IniciarSesion?mensaje=1");
+            }
+            else
+            {
+                ViewBag.idCliente = Session["sesion"];
+            }
+
+            
             return View();
         }
+        public ActionResult cerrarsesion()
+        {
+            Session.Remove("sesion");
+            return Redirect("~/Home/Index");
 
+        }
         [HttpPost]
         public ActionResult IniciarSesion(string usuario, string pass)
         {
-            var resultclient= db.Cliente.Where(c => c.correo.Equals(usuario)&& c.pass.Equals(pass)).FirstOrDefault();
-            var resultadmin = db.UsuarioAdmin.Where(a => a.nombreAdmin.Equals(usuario)&& a.clave.Equals(pass)).FirstOrDefault();
-
-            if (resultclient==null&&resultadmin==null)
-            {
-                return View();
-            }
-            else if (resultclient != null)
+            try
             {
 
-                //var cliente = this.ToCliente(resultclient.);
-               // var cliente = this.Details(resultclient.idCliente);
-                // this.Perfil(cliente);
-                return Redirect("/Clientes/PanelCliente/"+resultclient.idCliente);
+                //SENTENCIA LINQ PARA INICIO DE SESIÓN
+                var resultclient = db.Cliente.Where(c => c.correo.Equals(usuario) && c.pass.Equals(pass)).FirstOrDefault();
+                var resultadmin = db.UsuarioAdmin.Where(a => a.nombreAdmin.Equals(usuario) && a.clave.Equals(pass)).FirstOrDefault();
 
+                if (resultclient == null && resultadmin == null)
+                {
+                    TempData["msg"] = "<script>alert('Datos incorrectos');</script>";
+                    return View();
+                }
+                else if (resultclient != null)
+                {
+                    Session["sesion"] = resultclient.idCliente;
+
+                    return Redirect("/Productos/IndexClient");
+
+                }
+                else if (resultadmin != null)
+                {
+                    Session["sesion"] = resultadmin;
+                    return Redirect("/Productos/Index");
+                }
+                return View("IniciarSesion");
             }
-            else if (resultadmin != null)
+            catch (Exception e)
             {
-                return Redirect("/Productos/Index");
+                return ViewBag.Error ;
             }
-
-             return View("IniciarSesion");
+           
 
         }
 

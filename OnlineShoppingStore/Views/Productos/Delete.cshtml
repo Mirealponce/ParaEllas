@@ -24,7 +24,7 @@
             Eliminar Producto
         </div>
         <div class="card-body">
-            <h4>Producto</h4>
+            <h4 class="control-label col-md-2">Producto</h4>
             <hr />
             <dl class="dl-horizontal">
                 <dt>
@@ -32,7 +32,12 @@
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.Foto)
+                    @if (!string.IsNullOrEmpty(Model.Foto))
+                    {
+               
+                    <img src="@Url.Content(Model.Foto)" alt="Image" style="width:180px;height:250px;" />
+               
+                }
                 </dd>
 
                 <dt>

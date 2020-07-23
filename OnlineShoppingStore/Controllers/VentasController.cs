@@ -37,7 +37,7 @@ namespace OnlineShoppingStore.Controllers
         }
 
         // GET: Ventas/Create
-        public ActionResult Create(int totalventa, DateTime fecha, int idClient)
+        public ActionResult Create()
         {
             ViewBag.Cliente_idCliente = new SelectList(db.Cliente, "idCliente", "nombre");
             return View();

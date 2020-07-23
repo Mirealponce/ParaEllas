@@ -1,58 +1,58 @@
 ﻿@model IEnumerable<OnlineShoppingStore.Models.DAL.Producto>
 
-@{
-    ViewBag.Title = "OrdenarPorCategoria";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "IndexClient";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h2>OrdenarPorCategoria</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nombreProducto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Categoria.tipoCategoria)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombreProducto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.precio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categoria.tipoCategoria)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idProducto }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idProducto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idProducto })
-        </td>
-    </tr>
-}
 
-</table>
+<div class="Categorias">
+
+    @{ Html.RenderAction("MostrarCategoria", "Categorias");}
+</div>
+
+<div class="row product-container" style="margin-top: -200px; margin-left: 300px;">
+
+    @foreach (var item in Model)
+    {
+
+<div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px;height: 370px;width: 246px;">
+    <a href=@("../Productos/Details/"+item.idProducto)>
+        <div class="thumbnail product-item" style="height:350px; width:220px;">
+
+            <div class="caption">
+
+                @if (!string.IsNullOrEmpty(item.Foto))
+                {
+<center>
+    <img src="@Url.Content(item.Foto)" alt="Image" style="width:180px;height:250px;" />
+</center>}
+
+                <div>
+                    <center>
+                        @Html.DisplayFor(modelItem => item.Categoria.tipoCategoria)
+                    </center>
+                </div>
+                <div>
+                    <center>
+                        @Html.DisplayFor(modelItem => item.nombreProducto)
+                    </center>
+                </div>
+                <div>
+                    <center>
+                        @Html.DisplayFor(modelItem => item.precio)
+                    </center>
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </a>
+</div>}
+</div>

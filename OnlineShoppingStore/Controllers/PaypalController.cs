@@ -14,59 +14,66 @@ namespace OnlineShoppingStore.Controllers
         // GET: Paypal
         public ActionResult metodoPaypal()
         {
-            APIContext apiContext = PaypalConfiguration.GetAPIContext();
-            try
+            if (Session["sesion"] != null)
             {
-
-                string payerId = Request.Params["PayerID"];
-                if (string.IsNullOrEmpty(payerId))
+                APIContext apiContext = PaypalConfiguration.GetAPIContext();
+                try
                 {
 
-
-                    string baseURI = Request.Url.Scheme + "://" + Request.Url.Authority + "/Paypal/metodoPaypal?";
-                    var Guid = Convert.ToString((new Random()).Next(100000));
-
-                    var createdPayment = this.CreatePayment(apiContext, baseURI + "guid=" + Guid);
-
-                    var link = createdPayment.links.GetEnumerator();
-                    string paypalRedirectUrl = null;
-                    while (link.MoveNext())
+                    string payerId = Request.Params["PayerID"];
+                    if (string.IsNullOrEmpty(payerId))
                     {
-                        Links lnk = link.Current;
-                        if (lnk.rel.ToLower().Trim().Equals("approval_url"))
+
+
+                        string baseURI = Request.Url.Scheme + "://" + Request.Url.Authority + "/Paypal/metodoPaypal?";
+                        var Guid = Convert.ToString((new Random()).Next(100000));
+
+                        var createdPayment = this.CreatePayment(apiContext, baseURI + "guid=" + Guid);
+
+                        var link = createdPayment.links.GetEnumerator();
+                        string paypalRedirectUrl = null;
+                        while (link.MoveNext())
+                        {
+                            Links lnk = link.Current;
+                            if (lnk.rel.ToLower().Trim().Equals("approval_url"))
+                            {
+
+                                paypalRedirectUrl = lnk.href;
+                            }
+                        }
+
+                        // saving the paymentID in the key guid
+                        Session.Add(Guid, createdPayment.id);
+                        return Redirect(paypalRedirectUrl);
+
+                    }
+                    else
+                    {
+
+                        var guid = Request.Params["guid"];
+                        var executedPayment = ExecutePayment(apiContext, payerId, Session[guid] as string);
+
+                        if (executedPayment.state.ToLower() != "approved")
                         {
 
-                            paypalRedirectUrl = lnk.href;
+                            return View("ErrorTransaccion");
                         }
+
                     }
-
-                    // saving the paymentID in the key guid
-                    Session.Add(Guid, createdPayment.id);
-                    return Redirect(paypalRedirectUrl);
-
                 }
-                else
+                catch (Exception ex)
                 {
-
-                    var guid = Request.Params["guid"];
-                    var executedPayment = ExecutePayment(apiContext, payerId, Session[guid] as string);
-
-                    if (executedPayment.state.ToLower() != "approved")
-                    {
-
-                        return View("ErrorTransaccion");
-                    }
-
+                    ViewBag.Result = ex.Message;
+                    return View("ErrorTransaccion");
                 }
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Result = ex.Message;
-                return View("ErrorTransaccion");
-            }
 
-            ViewBag.Result = "Exitoo";
-            return View("Exito");
+                ViewBag.Result = "Exitoo";
+                return View("Exito");
+            }
+            else
+            {
+                return Redirect("~/Clientes/IniciarSesion?mensaje=1");
+            }
         }
 
 

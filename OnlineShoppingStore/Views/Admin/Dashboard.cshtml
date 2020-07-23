@@ -1,8 +1,93 @@
-﻿
-@{
-    ViewBag.Title = "Dashboard";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
+﻿@model DotNet.Highcharts.Highcharts
+@{ ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 
-<h2>Dashboard</h2>
+    <center><h2>Dashboard<hr style=" margin-left: 60px; margin-right: 60px; " /></h2></center>
+
+<script type="text/javascript">
+    /* Highcharts.chart('columnchart', {
+
+        tooltip: {
+            split: true,
+            valueSuffix: ' millions'
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+
+    }); */
+</script>
+
+<div class="row" style=" margin-left: 100px; margin-bottom: 20px; ">
+    
+
+        <div class="card " style=" margin-left: 50px; margin-right: 50px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1);">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Total Clientes</h5>
+                        <span class="h2 font-weight-bold mb-0">50.000</span>
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="card " style=" margin-left: 50px; margin-right: 50px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1);">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Total Ventas</h5>
+                        <span class="h2 font-weight-bold mb-0">200.000</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="card " style=" margin-left: 50px; margin-right: 50px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1);">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Total Entregas</h5>
+                        <span class="h2 font-weight-bold mb-0">500</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+ 
+</div>
+<div class="row">
+    <div style=" margin-left: 50px;width: 500px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1);">
+
+        <div class="col-md-12 col-md-6">
+            @ViewBag.GraficoVentas
+        </div>
+    </div>
+
+    <div style=" margin-left: 50px;width: 500px; box-shadow: 10px 10px 27px 0px rgba(171,171,171,1);">
+
+        <div class="col-md-12 col-md-6">
+            @ViewBag.GraficoVentasCliente
+        </div>
+    </div>
+
+</div>
 

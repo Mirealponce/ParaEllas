@@ -1,7 +1,7 @@
 ﻿@model OnlineShoppingStore.Models.DAL.Cliente
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Registrarse";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,62 +12,62 @@
     @Html.AntiForgeryToken()
 
 <center>
+    <div style="box-shadow: 10px 10px 27px 0px rgba(171,171,171,1); margin-left: 0px; width: 1000px;height: auto;">
+        <div class="form-horizontal" style=" margin-left: 100px; ">
 
-    <div class="form-horizontal" style=" margin-left: 100px; ">
-
-       <br />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <center>
-               <label class="control-label col-md-2" for="Nombre_" style=" margin-left: 200px; padding-left: 0px;"> Nombre </label>
-            </center>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="nombre" name="nombre" type="text" 
-                       style=" width: 326px; margin-top: -25px; margin-left: 100px; "/>
-                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <center>
+                    <label class="control-label col-md-2" for="Nombre_" style=" margin-left: 50px; padding-left: 0px;"> Nombre </label>
+                </center>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="nombre" name="nombre" type="text"
+                           style=" width: 326px; margin-top: -25px; margin-left: 100px; " />
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                </div>
             </div>
+
+            <div class="form-group">
+                <center>
+                    <label class="control-label col-md-2" for="Apellido_Paterno_" style=" margin-left: 50px;">Apellido Paterno </label>
+                </center>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="apellido" name="apellido" type="text"
+                           style=" width: 326px; margin-top: -25px; margin-left: 100px; " />
+                    @Html.ValidationMessageFor(model => model.apellido, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Correo_electr_nico_" style=" margin-left: 50px;">Correo electrónico </label>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="correo" name="correo" type="email"
+                           style=" width: 326px; margin-top: -25px; margin-left: 100px; " />
+                    @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Contrase_a_" style=" margin-left: 50px;"> Contraseña </label>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="pass" name="pass" type="password"
+                           style=" width: 326px; margin-top: -25px; margin-left: 100px; " />
+                    @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style=" margin-left: 0px; ">
+                    <input type="submit" class="btn btn-warning" value="Registrarme" style="margin-left: 0px; margin-bottom: 20px;" />
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="form-group">
-            <center>
-                <label class="control-label col-md-2" for="Apellido_Paterno_" style=" margin-left: 200px;">Apellido Paterno </label>
-            </center>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="apellido" name="apellido" type="text"
-                       style=" width: 326px; margin-top: -25px; margin-left: 100px; " />
-                @Html.ValidationMessageFor(model => model.apellido, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-          <label class="control-label col-md-2" for="Correo_electr_nico_" style=" margin-left: 200px;">Correo electrónico </label>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="correo" name="correo" type="email"
-                       style=" width: 326px; margin-top: -25px; margin-left: 100px; " />
-                @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Contrase_a_" style=" margin-left: 200px;"> Contraseña </label>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" id="pass" name="pass" type="text"
-                       style=" width: 326px; margin-top: -25px; margin-left: 100px; " />
-                @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10" style=" margin-left: 0px; ">
-                    <input type="submit" class="btn btn-warning" value="Registrarme" style="margin-left:0px;" />
-            </div>
-            
-        </div>
 
     </div>
-
-   
-
 </center>
 
 }

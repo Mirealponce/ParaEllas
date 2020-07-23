@@ -28,5 +28,13 @@ namespace OnlineShoppingStore.Models.DAL
         public virtual Producto Producto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }
+
+        public string DatosCombo
+        {
+            get
+            {
+                return string.Format("{0} {1}", Producto.nombreProducto, Talla);
+            }
+        }
     }
 }

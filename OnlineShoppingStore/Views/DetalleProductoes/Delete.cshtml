@@ -1,49 +1,68 @@
 ﻿@model OnlineShoppingStore.Models.DAL.DetalleProducto
 
-@{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "Delete";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 
-<h2>Delete</h2>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>DetalleProducto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Talla)
-        </dt>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item ">Producto</li>
+        <li class="breadcrumb-item active">Eliminar Producto</li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Talla)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CantidadStock)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CantidadStock)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Producto.Foto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Producto.Foto)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Eliminar Stock
         </div>
-    }
+        <div class="card-body">
+            <h4 class="control-label col-md-2">Stock</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Talla)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Talla)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CantidadStock)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CantidadStock)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Producto.Foto)
+                </dt>
+
+                <dd>
+                    @if (!string.IsNullOrEmpty(Model.Producto.Foto))
+                    {
+                <img src="@Url.Content(Model.Producto.Foto)" alt="Image" style="width:60px;height:80px;" />
+                }
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+@Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> 
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info" })
+                </div>
+                }
+        </div>
+    </div>
 </div>
