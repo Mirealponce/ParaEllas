@@ -42,9 +42,10 @@ namespace OnlineShoppingStore.Controllers
        
         }
         
-        //FILTRAR POR CATEGORÍA
+        
         public async Task<ActionResult> filtrar(string nombre)
         {
+            //FILTRAR POR CATEGORÍA
             var filtro = db.Producto.Where(tipo => tipo.Categoria.tipoCategoria.Equals(nombre));
            
             return View(filtro);
